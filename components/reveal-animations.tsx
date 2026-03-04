@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useAnimation, useInView } from "framer-motion";
-
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, type ReactNode } from "react";
 
