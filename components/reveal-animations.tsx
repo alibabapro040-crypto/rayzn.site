@@ -1,10 +1,9 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
 import { cn } from "@/lib/utils";
-import { ReactNode, useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 interface BlurIntProps {
   children: ReactNode;
@@ -35,10 +34,7 @@ export const BlurIn = ({
       animate="visible"
       transition={{ duration, delay }}
       variants={combinedVariants}
-      className={cn(
-        className
-        // "font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
-      )}
+      className={cn(className)}
     >
       {children}
     </motion.div>

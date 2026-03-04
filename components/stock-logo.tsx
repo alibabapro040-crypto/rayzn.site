@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 export default function StockLogo({ symbol, size = 40 }: { symbol: string; size?: number }) {

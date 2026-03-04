@@ -5,8 +5,6 @@ import { z } from "zod";
 
 export const runtime = "nodejs";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const Email = z.object({
   fullName: z.string().min(2, "Full name is invalid!"),
   email: z.string().email({ message: "Email is invalid!" }),
@@ -15,6 +13,12 @@ const Email = z.object({
 
 export async function POST(req: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      return Response.json({ error: "Resend API key is not configured" }, { status: 500 });
+    }
+    
+    const resend = new Resend(apiKey);
     const body = await req.json();
     const parsed = Email.safeParse(body);
     if (!parsed.success) return Response.json({ error: parsed.error.message }, { status: 400 });
